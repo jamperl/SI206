@@ -23,10 +23,12 @@ debug = False #True
 if debug:
 	print ("Getting information from file madlib_test.txt...\n")
 
+<<<<<<< HEAD
 param =  (text2[:150])
 print (' '.join(param))
 tokens = nltk.word_tokenize(param)
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
+
 if debug:
 	print ("First few tagged tokens are:")
 	for tup in tagged_tokens[:5]:
