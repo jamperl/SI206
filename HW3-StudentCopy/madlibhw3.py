@@ -23,22 +23,17 @@ debug = False #True
 if debug:
 	print ("Getting information from file madlib_test.txt...\n")
 
-str_1 =  (text2[:151])
-param = ' '.join(str_1)
-print (param)
+param =  (text2[:150])
+print (' '.join(param))
 tokens = nltk.word_tokenize(param)
-print("TOKENS")
-print(tokens)
 tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-print("TAGGED TOKENS")
-print(tagged_tokens)
 if debug:
 	print ("First few tagged tokens are:")
 	for tup in tagged_tokens[:5]:
 		print (tup)
 
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective", "RB":"an adverb", "VBP":"a present tense verb"}
-substitution_probabilities = {"NN":.15,"NNS":.10,"VB":.10,"JJ":.10, "RB":.10, "VBP":.10}
+tagmap = {"NN":"a noun","VB":"a verb","IN":"a preposition","JJ":"an adjective", "AT":"an article"}
+substitution_probabilities = {"NN":0.15,"VB":0.10,"PRT":0.10,"JJ":0.10, "RB":0.10}
 
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
