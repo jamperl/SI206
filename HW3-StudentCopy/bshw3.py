@@ -14,23 +14,26 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
+fopen = open('part2.html', 'w')
 base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
 r = requests.get(base_url)
-soup = BeautifulSoup(r.text, "lxml")
+soup = BeautifulSoup(r.text, 'lxml')
 
-words = soup.find_all(text=True)
-new_words = []
-for txt in words:
-	if re.search('student', txt):
-		new_txt = re.sub('student', 'AMAZING student', txt)
-		new_words.append(new_txt)
+words = soup.find_all(text=re.compile('student'))
+
+for item in words:
+	new_txt = re.sub('student', 'AMAZING student', item)
+	item.replace_with(new_txt)
+
+images = soup.find_all('img')
+for img in images:
+	if img['src'] == 'logo2.png':
+		img['src'] = 'media/logo.png'
 	else:
-		new_words.append(txt)
+		img['src'] = 'media/leafs.jpg'
 
-for item in new_words:
-	print (item, end=' ')
+nice = soup.prettify()
+fopen.write(nice)
+fopen.close()
 
-# images = soup.find_all('img')
-# for img in images:
-# 	if img.p:
-# 		print (img)
+
