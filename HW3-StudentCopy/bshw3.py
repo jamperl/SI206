@@ -14,7 +14,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-fopen = open('part2.html', 'w')
+f = open('part2.html', 'w')
 base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
 r = requests.get(base_url)
 soup = BeautifulSoup(r.text, 'lxml')
@@ -33,7 +33,7 @@ for img in images:
 		img['src'] = 'media/leafs.jpg'
 
 nice = soup.prettify()
-fopen.write(nice)
-fopen.close()
+f.write(nice)
+f.close()
 
 
