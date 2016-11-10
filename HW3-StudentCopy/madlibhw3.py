@@ -17,31 +17,24 @@ from nltk import word_tokenize,sent_tokenize
 
 print("START*******")
 
-debug = False #True
-
-
-if debug:
-	print ("Getting information from file madlib_test.txt...\n")
-
-<<<<<<< HEAD
-param =  (text2[:150])
-print (' '.join(param))
-tokens = nltk.word_tokenize(param)
-tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-
-if debug:
-	print ("First few tagged tokens are:")
-	for tup in tagged_tokens[:5]:
-		print (tup)
-
-tagmap = {"NN":"a noun","VB":"a verb","IN":"a preposition","JJ":"an adjective", "AT":"an article"}
-substitution_probabilities = {"NN":0.15,"VB":0.10,"PRT":0.10,"JJ":0.10, "RB":0.10}
-
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
 		return word
 	else:
 		return " " + word
+
+words = []
+param =  text2[:150]
+tagged_tokens = nltk.pos_tag(param) # gives us a tagged list of tuples
+for item in param:
+	words.append(spaced(item))
+
+print ("***ORIGINAL TEXT***")
+print (''.join(words))
+
+tagmap = {"NN":"a noun","VB":"a verb","IN":"a preposition","JJ":"an adjective", "AT":"an article"}
+substitution_probabilities = {"NN":0.15,"VB":0.10,"PRT":0.10,"JJ":0.10, "AT":0.10}
+
 
 final_words = []
 
@@ -53,6 +46,6 @@ for (word, tag) in tagged_tokens:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
 
+print ("***NEW TEXT***")
 print ("".join(final_words))
-
-print("\n\nEND*******")
+print("\nEND*******")
