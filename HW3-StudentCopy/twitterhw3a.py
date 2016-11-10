@@ -16,6 +16,6 @@ auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
-img = 'leafs.png'
+img = 'media/leafs.jpg'
 txt = "#UMSI-206 #Proj3"
 api.update_with_media(img, status=txt)
