@@ -19,24 +19,22 @@ auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
-pol_sum = 0
-pol_count = 0
-subj_sum = 0
-subj_count = 0
+pol_sum = 0 # total for polarity
+subj_sum = 0 # total for subjectivity
+count = 0 # counter for total tweets collected
 
 tweet_group = api.search("Toronto Maple Leafs")
 
 print ("***TWEETS***")
 for tweet in tweet_group:
-	blob = TextBlob(tweet.text)
+	blob = TextBlob(tweet.text) #use tweepy to format tweets
 	print (blob)
-	sent = blob.sentiment
+	sent = blob.sentiment # collect sentiment
 	polarity = sent.polarity
 	subjectivity = sent.subjectivity
-	pol_sum += polarity
-	pol_count += 1
-	subj_sum += subjectivity
-	subj_count += 1
+	pol_sum += polarity # add polarity value to total
+	subj_sum += subjectivity # add subjectivity value to total
+	count += 1 # add one tweet to the count
 print ("\n***SENTIMENT***")
-print("Average subjectivity is", round((subj_sum/subj_count), 2))
-print("Average polarity is", round((pol_sum/pol_count), 2))
+print("Average subjectivity is", round((subj_sum/count), 2)) # complete computation of averages
+print("Average polarity is", round((pol_sum/count), 2))

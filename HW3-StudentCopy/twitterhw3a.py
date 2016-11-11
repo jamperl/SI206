@@ -16,6 +16,6 @@ auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
-img = 'media/leafs.jpg'
-txt = "#UMSI-206 #Proj3"
-api.update_with_media(img, status=txt)
+img = 'media/leafs.jpg' # image location
+txt = "#UMSI-206 #Proj3" # hashtags to be used
+api.update_with_media(img, status=txt) # upload media to twitter, which finds the image from it's location and adds the hashtags to the status

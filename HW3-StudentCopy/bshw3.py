@@ -14,26 +14,26 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-f = open('bshw3.html', 'w')
+f = open('bshw3.html', 'w') # open new html file to write called bshw3
 base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
 r = requests.get(base_url)
 soup = BeautifulSoup(r.text, 'lxml')
 
-words = soup.find_all(text=re.compile('student'))
+words = soup.find_all(text=re.compile('student')) # create list of all sentences with the word student
 
 for item in words:
-	new_txt = re.sub('student', 'AMAZING student', item)
-	item.replace_with(new_txt)
+	new_txt = re.sub('student', 'AMAZING student', item) # iterate through words and make new_txt = the new sentence with AMAZING before student
+	item.replace_with(new_txt) # replace the original sentence with new_txt on the page
 
-images = soup.find_all('img')
+images = soup.find_all('img') # find all img tags
 for img in images:
-	if img['src'] == 'logo2.png':
-		img['src'] = 'media/logo.png'
+	if img['src'] == 'logo2.png': 
+		img['src'] = 'media/logo.png' # if it is a michigan logo, replace with given SI logo in media folder
 	else:
-		img['src'] = 'media/leafs.jpg'
+		img['src'] = 'media/leafs.jpg' # replace all other photos (the main photo) with a picture of myself
 
 nice = soup.prettify()
-f.write(nice)
-f.close()
+f.write(nice) # write the new file with well formatted code
+f.close() # close the file 
 
 

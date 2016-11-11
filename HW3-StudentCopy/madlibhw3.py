@@ -24,13 +24,13 @@ def spaced(word):
 		return " " + word
 
 words = []
-param =  text2[:150]
+param =  text2[:150] # gives us first 150 tokens
 tagged_tokens = nltk.pos_tag(param) # gives us a tagged list of tuples
 for item in param:
-	words.append(spaced(item))
+	words.append(spaced(item)) # use spaced function when appending to new list to keep format of text
 
 print ("***ORIGINAL TEXT***")
-print (''.join(words))
+print (''.join(words)) # printing out original text
 
 tagmap = {"NN":"a noun","VB":"a verb","IN":"a preposition","JJ":"an adjective", "AT":"an article"}
 substitution_probabilities = {"NN":0.15,"VB":0.10,"PRT":0.10,"JJ":0.10, "AT":0.10}
@@ -47,5 +47,5 @@ for (word, tag) in tagged_tokens:
 		final_words.append(spaced(new_word))
 
 print ("***NEW TEXT***")
-print ("".join(final_words))
+print ("".join(final_words)) # printing out final words
 print("\nEND*******")
