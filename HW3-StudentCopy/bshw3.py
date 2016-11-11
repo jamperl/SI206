@@ -14,7 +14,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-f = open('part2.html', 'w')
+f = open('bshw3.html', 'w')
 base_url = 'http://collemc.people.si.umich.edu/data/bshw3StarterFile.html'
 r = requests.get(base_url)
 soup = BeautifulSoup(r.text, 'lxml')

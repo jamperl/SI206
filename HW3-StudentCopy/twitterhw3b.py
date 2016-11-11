@@ -26,6 +26,7 @@ subj_count = 0
 
 tweet_group = api.search("Toronto Maple Leafs")
 
+print ("***TWEETS***")
 for tweet in tweet_group:
 	blob = TextBlob(tweet.text)
 	print (blob)
@@ -36,6 +37,6 @@ for tweet in tweet_group:
 	pol_count += 1
 	subj_sum += subjectivity
 	subj_count += 1
-
+print ("\n***SENTIMENT***")
 print("Average subjectivity is", round((subj_sum/subj_count), 2))
 print("Average polarity is", round((pol_sum/pol_count), 2))
